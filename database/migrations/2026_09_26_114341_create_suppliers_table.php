@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('post', 50);
             $table->string('phone', 50);
             $table->string('email', 50);
-            $table->text('web')->nullable();
+            $table->string('web')->nullable();
             $table->string('legal_address', 50);
             $table->string('facts_address', 50);
             $table->string('city', 50);
