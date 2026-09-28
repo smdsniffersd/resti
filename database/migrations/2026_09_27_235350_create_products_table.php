@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('type', 50);
+            $table->foreignId('unit_id')->nullable()->constrained('units');
+            $table->decimal('price', 10, 2)->nullable();
+            $table->index('type');
+            $table->index('unit_id');
+        });
+        DB::statement("ALTER TABLE products ADD CONSTRAINT check_product_type
+        CHECK (type = ANY (ARRAY[
+            'alcohol', 'liquid_milk', 'solid_dairy', 'meat', 'seafood',
+            'vegetable', 'grocery', 'frozen', 'bakery', 'beverage',
+            'sauce', 'confectionery', 'eggs', 'oil', 'other'
+        ]));");
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('products');
+    }
+};
