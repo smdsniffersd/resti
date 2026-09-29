@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('supplies_id')->nullable()->constrained('supplies');
             $table->decimal('quantity', 10, 3);
             $table->decimal('price', 10, 2)->default(0);
-            $table->timestamp('last_update')->useCurrent();
+            $table->timestamp('last_update')->nullable()->useCurrent();
             $table->unique(['product_id', 'location_id', 'supplies_id']);
             $table->index('location_id');
             $table->index('supplies_id');

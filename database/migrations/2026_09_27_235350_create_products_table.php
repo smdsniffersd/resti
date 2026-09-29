@@ -26,7 +26,7 @@ return new class extends Migration
             'alcohol', 'liquid_milk', 'solid_dairy', 'meat', 'seafood',
             'vegetable', 'grocery', 'frozen', 'bakery', 'beverage',
             'sauce', 'confectionery', 'eggs', 'oil', 'other'
-        ]));");
+        ]))");
     }
 
     /**
