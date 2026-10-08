@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class DebitReason extends Model
+class MenuCategory extends Model
 {
     public $timestamps = false;
-    public function operations(): HasMany{
-        return $this->hasMany(Operation::class);
+    public function menus(): HasMany{
+        return $this->hasMany(Menu::class, 'category_id');
     }
 }
