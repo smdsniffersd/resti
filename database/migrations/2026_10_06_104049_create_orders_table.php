@@ -25,7 +25,7 @@ return new class extends Migration
             $table->index('waiter_id');
             $table->index('table_id');
         });
-        DB::statement("ALTER TABLE orders ADD CONSTRAINT check_orders_time CHECK(order_to_time > order_at)");
+        DB::statement("ALTER TABLE orders ADD CONSTRAINT check_orders_time CHECK(order_to_time IS NULL OR order_to_time > order_at)");
     }
 
     /**
